@@ -4,7 +4,6 @@
 | ------------------ | ------- | ------------------------- |
 | nickname           | string  | null: false               |
 | email              | string  | null: false, unique: true |
-| password           | string  | null: false               |
 | encrypted_password | string  | null: false               |
 | firstname          | string  | null: false               |
 | lastname           | string  | null: false               |
@@ -18,21 +17,21 @@
 
 ## products テーブル
 
-| Column    | Type          | Options                        |
-| --------- | ------------- | ------------------------------ |
-| name      | string        | null: false                    |
-| introduce | text          | null: false                    |
-| category  | string        | null: false                    |
-| status    | string        | null: false                    |
-| burden    | string        | null: false                    |
-| area      | string        | null: false                    |
-| days      | string        | null: false                    |
-| price     | integer       | null: false                    |
-| user      | references    | null: false, foreign_key: true |
+| Column      | Type          | Options                        |
+| ----------- | ------------- | ------------------------------ |
+| name        | string        | null: false                    |
+| introduce   | text          | null: false                    |
+| category_id | integer       | null: false                    |
+| status_id   | integer       | null: false                    |
+| burden_id   | integer       | null: false                    |
+| area_id     | integer       | null: false                    |
+| day_id      | integer       | null: false                    |
+| price       | integer       | null: false                    |
+| user        | references    | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
-- has_one    :purchases
+- has_one    :purchase
 
 ## purchases テーブル
 
@@ -44,7 +43,7 @@
 ### Association
 - belongs_to :user
 - belongs_to :products
-- has_one    :addresses
+- has_one    :address
 
 ## addresses テーブル
 
@@ -56,6 +55,7 @@
 | address        | string     | null: false                    |
 | building       | string     |                                |
 | phone          | string     | null: false                    |
+| purchase       | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :purchases
