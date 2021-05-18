@@ -27,7 +27,7 @@
 | area_id     | integer       | null: false                    |
 | day_id      | integer       | null: false                    |
 | price       | integer       | null: false                    |
-| user        | references    | null: false, foreign_key: true |
+| user_id     | references    | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -37,12 +37,12 @@
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
-| user           | references | null: false, foreign_key: true |
-| product        | references | null: false, foreign_key: true |
+| user_id        | references | null: false, foreign_key: true |
+| product_id     | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
-- belongs_to :products
+- belongs_to :product
 - has_one    :address
 
 ## addresses テーブル
@@ -50,12 +50,12 @@
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
 | postal         | string     | null: false                    |
-| prefectures_id | integer    | null: false                    |
+| prefecture_id  | integer    | null: false                    |
 | municipality   | string     | null: false                    |
 | address        | string     | null: false                    |
 | building       | string     |                                |
 | phone          | string     | null: false                    |
-| purchase       | references | null: false, foreign_key: true |
+| purchase_id    | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :purchases
+- belongs_to :purchase
