@@ -27,7 +27,7 @@
 | area_id     | integer       | null: false                    |
 | day_id      | integer       | null: false                    |
 | price       | integer       | null: false                    |
-| user_id     | references    | null: false, foreign_key: true |
+| user        | references    | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -37,8 +37,8 @@
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
-| user_id        | references | null: false, foreign_key: true |
-| product_id     | references | null: false, foreign_key: true |
+| user           | references | null: false, foreign_key: true |
+| product        | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -55,7 +55,7 @@
 | address        | string     | null: false                    |
 | building       | string     |                                |
 | phone          | string     | null: false                    |
-| purchase_id    | references | null: false, foreign_key: true |
+| purchase       | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :purchase
