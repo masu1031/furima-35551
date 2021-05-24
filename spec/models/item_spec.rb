@@ -59,7 +59,7 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
-      it 'priceが英字以外だと登録できない' do
+      it 'priceが数字以外だと登録できない' do
         @item.price = 'AAA'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not included in the list')
