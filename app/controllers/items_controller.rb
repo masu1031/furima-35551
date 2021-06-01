@@ -24,13 +24,14 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    redirect_to root_path if @item.order.present?
   end
 
   def update
-    unless @item.update(item_params)
-      render :edit
-    else
+    if @item.update(item_params)
       redirect_to root_path
+    else
+      render :edit
     end
   end
 
@@ -42,17 +43,15 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:image, :name, :introduce, :category_id, :status_id, :burden_id, :prefecture_id, :day_id, :price).merge(user_id: current_user.id)
+    params.require(:item).permit(:image, :name, :introduce, :category_id, :status_id, :burden_id, :prefecture_id, :day_id,
+                                 :price).merge(user_id: current_user.id)
   end
 
   def set_item
-    @item = Item.find(params[:id])    
+    @item = Item.find(params[:id])
   end
 
   def match_user
-    unless @item.user == current_user
-      redirect_to action: :index
-    end
+    redirect_to action: :index unless @item.user == current_user
   end
-
 end
