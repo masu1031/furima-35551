@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :Items
+  has_many :orders
 
   validates :nickname, :lastname, :firstname, :lastkana, :firstkana, :birthday, presence: true
   validates :lastname, :firstname, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/ }
